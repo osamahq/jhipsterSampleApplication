@@ -1,0 +1,83 @@
+entity ThunderParameter{
+	name String,
+	possibleValues String,
+	maxLength Long,
+	type String,
+	allowedSpecialCharacters String ,
+	allowArabic Bollean
+}
+
+entity MainMerchant{
+	name String,
+	phoneNumber String,
+	contactEmail String,
+	accountAdministratorEmail String,
+	contactPerson String,
+	technicalEmail String,
+	website String,
+	merchantIdentifier String
+}
+
+entity Merchant{
+	accessCode String,
+	alogType Integer,
+	requestPhrase String,
+	responsePhrase String,
+	creationDate Date,
+	lastUpdatedDate Date,
+	createdBy Integer,
+	lastUpdatedBy Integer,
+	status Integer,
+	originIp String,
+	originUrl String,
+	gracePeriod Integer,
+	numberOfRetries Integer,
+	notifyAfter Integer,
+	transactionUrl String,
+	h2hUrl String,
+	responseContentType Integer
+}
+
+entity MerchantInfo{
+	commercialName String,
+	contactPerson String,
+	phoneNumber String,
+	technicalEmail String,
+	industry String,
+	website String,
+	creationDate Date,
+	lastUpdatedDate Date,
+	createdBy Integer,
+	lastUpdatedBy Integer,
+	status Integer,
+	contactEmail String,
+	accountAdministratorEmail String,
+	logoPath String,
+	logoName String,
+	entityTimezone String,
+	entityCountryId Country,
+	code String
+}
+
+entity Processor {
+	processorName String,
+	status Integer,
+	contactPerson String,
+	code String,
+	accountParameters String
+}
+
+entity Operations{
+	name String,
+    command String   
+}
+
+relationship OneToOne {
+	Merchant {info} to MerchantInfo
+}
+relationship OneToMany {
+	
+	MainMerchant{mainMerchnat} to Merchant,
+	Operations{operation} to ThunderParameter
+    
+}
